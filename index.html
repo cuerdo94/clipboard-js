@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clipboard Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid #17a2b8;
+      background-color: transparent;
+      color: #17a2b8;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .btn:active,
+    .btn:focus {
+      outline: none;
+    }
+
+    .btn:hover {
+      background-color: #17a2b8;
+      color: #fff;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      resize: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <button class="btn" onclick="copyUrl('HOLA MUNDO')">Copiar</button>
+    <textarea id="output" placeholder="Pega el texto aquí..."></textarea>
+  </div>
+
+  <script>
+    function copyUrl(url) {
+      var tempInput = document.createElement("input");
+      tempInput.value = url;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      event.target.innerHTML = "Copiado";
+    }
+  </script>
+</body>
+
+</html>
